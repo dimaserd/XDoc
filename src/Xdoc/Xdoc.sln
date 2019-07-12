@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xdoc.Model", "Xdoc.Model\Xd
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clt", "Clt", "{45D82198-F3D9-4AB3-98F0-1BE81583E730}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clt.Logic", "Clt\Clt.Logic\Clt.Logic.csproj", "{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clt.Contract", "Clt.Contract\Clt.Contract.csproj", "{678DDC52-52C3-4613-921B-748647C56C9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +39,21 @@ Global
 		{D3D43B71-24D9-41ED-810B-433215FEBE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3D43B71-24D9-41ED-810B-433215FEBE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3D43B71-24D9-41ED-810B-433215FEBE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678DDC52-52C3-4613-921B-748647C56C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678DDC52-52C3-4613-921B-748647C56C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678DDC52-52C3-4613-921B-748647C56C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678DDC52-52C3-4613-921B-748647C56C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5DA0D1A2-D0FC-492F-A467-8CC9D2CC6656} = {45D82198-F3D9-4AB3-98F0-1BE81583E730}
+		{678DDC52-52C3-4613-921B-748647C56C9F} = {45D82198-F3D9-4AB3-98F0-1BE81583E730}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94DA5D12-25E7-4218-9ADC-16F720D424E7}

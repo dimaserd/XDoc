@@ -12,4 +12,9 @@
     <ProjectReference Include="..\Xdoc.Model\Xdoc.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
