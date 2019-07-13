@@ -4,7 +4,6 @@ using Clt.Logic.Models.Account;
 using Clt.Logic.Workers.Users;
 using Croco.Core.Abstractions.ContextWrappers;
 using Croco.Core.Common.Models;
-using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xdoc.Logic.Workers;
 using Xdoc.Model.Contexts;
+using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Workers.Accounts
 {

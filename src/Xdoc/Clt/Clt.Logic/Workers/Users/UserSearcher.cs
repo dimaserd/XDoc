@@ -1,6 +1,5 @@
 ﻿using Clt.Contract.Account;
 using Croco.Core.Abstractions.ContextWrappers;
-using FocLab.Model.Entities.Users.Default;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xdoc.Logic.Workers;
 using Xdoc.Model.Contexts;
+using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Workers.Users
 {

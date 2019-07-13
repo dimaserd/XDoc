@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Xdoc.Logic.Extensions;
+using Xdoc.Model.Entities.Users.Default;
 
 namespace Xdoc.Logic.Services
 {

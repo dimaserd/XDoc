@@ -1,7 +1,7 @@
 ﻿using Clt.Logic.Abstractions;
-using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Implementations
 {

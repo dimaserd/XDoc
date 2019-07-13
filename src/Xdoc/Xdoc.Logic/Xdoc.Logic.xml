@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xdoc.Logic</name>
+    </assembly>
+    <members>
+        <member name="P:Xdoc.Logic.Models.RegisterClientWithPassport.Passport">
+            <summary>
+            Паспорт клиента
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.IssuedBy">
+            <summary>
+            Кем выдан
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.IssueDate">
+            <summary>
+            Дата выдачи
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.BirthPlace">
+            <summary>
+            Местро рождения
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.Series">
+            <summary>
+            Серия паспорта
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.Number">
+            <summary>
+            Номер
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.BirthDate">
+            <summary>
+            Дата рождения
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.Name">
+            <summary>
+            Имя
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.Surname">
+            <summary>
+            Фамилия
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.Patronymic">
+            <summary>
+            Отчество
+            </summary>
+        </member>
+        <member name="T:Xdoc.Logic.Resources.ValidationMessages">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.BrandNameCanNotBeEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Название бренда не может быть пустым.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.EmailIsNotValid">
+            <summary>
+              Ищет локализованную строку, похожую на Неправильный Email адрес.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.EmailIsRequired">
+            <summary>
+              Ищет локализованную строку, похожую на Необходимо указать Email.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ErrorOccuredFormat">
+            <summary>
+              Ищет локализованную строку, похожую на Произошла ошибка. {0}.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ModelIsNullObject">
+            <summary>
+              Ищет локализованную строку, похожую на Модель является пустым объектом.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ModelIsValid">
+            <summary>
+              Ищет локализованную строку, похожую на Модель валидна.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductAddedToCart">
+            <summary>
+              Ищет локализованную строку, похожую на Товар добавлен в корзину.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductCategoryMenuNameCanNotBeEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Название  меню продуктовых категорий не может быть пустым.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductFileIdsArrayIsEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Список идентификаторов файлов для товара пуст.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductIsAlreadyInCart">
+            <summary>
+              Ищет локализованную строку, похожую на Товар уже добавлен в корзину.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductItemIdIsRequired">
+            <summary>
+              Ищет локализованную строку, похожую на Необходимо указать идентификатор товарной позиции.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductItemIsNotFoundByProvidedIdentifier">
+            <summary>
+              Ищет локализованную строку, похожую на Товарная позиция не найдена по указанному идентификатору.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ProductItemIsNotFoundInCart">
+            <summary>
+              Ищет локализованную строку, похожую на Товарная позиция не найдена в корзине.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ThisEmailIsAlreadyTaken">
+            <summary>
+              Ищет локализованную строку, похожую на Данный Email уже занят другим пользователем.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ThisPhoneNumberIsAlreadyTaken">
+            <summary>
+              Ищет локализованную строку, похожую на Данный номер телефона уже занят другим пользователем.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.ThisPhoneNumberIsAlreadyTakenByOtherUser">
+            <summary>
+              Ищет локализованную строку, похожую на Данный номер телефона уже занят другим пользователем.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UriIsRequired">
+            <summary>
+              Ищет локализованную строку, похожую на Необходимо указать Uri.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UserFound">
+            <summary>
+              Ищет локализованную строку, похожую на Пользователь найден.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UserIdentifierMustBeProvided">
+            <summary>
+              Ищет локализованную строку, похожую на Необходимо указать идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UserIdIsRequired">
+            <summary>
+              Ищет локализованную строку, похожую на Необходимо указать идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UserIsNotFoundByIdentifier">
+            <summary>
+              Ищет локализованную строку, похожую на Пользователь не найден по указанному идентификатору.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.UserNotFound">
+            <summary>
+              Ищет локализованную строку, похожую на Пользователь не найден.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouAreNotAnAdministrator">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не являетесь администратором.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouAreNotAnAdministratorOrSeller">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не являетесь администратором или продавцом..
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouAreNotAuthorized">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не авторизованы.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouCantAddOrEditProductToCartWithQuantityLessOrEqualThanZero">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не можете изменить или добавить товар в корзину с колличеством меньшим или равным нулю.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouCantEditRootUser">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не можете редактировать пользователя Root.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouCantEditUserBecauseHeIsAdministrator">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не можете редактировать пользователя, так как он является администратором.
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Resources.ValidationMessages.YouCantEditUserBecauseHeIsSuperAdministrator">
+            <summary>
+              Ищет локализованную строку, похожую на Вы не можете редактировать пользователя, так как он является Супер-Администратором.
+            </summary>
+        </member>
+    </members>
+</doc>

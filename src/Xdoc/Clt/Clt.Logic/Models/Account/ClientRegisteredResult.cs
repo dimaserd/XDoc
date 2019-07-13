@@ -1,5 +1,5 @@
-﻿using FocLab.Model.Entities.Users.Default;
-using Xdoc.Model.Entities;
+﻿using Xdoc.Model.Entities;
+using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Models.Account
 {

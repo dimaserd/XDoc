@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xdoc.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Xdoc.Api.Controllers.AccountController">
+            <inheritdoc />
+            <summary>
+            Предоставляет методы для работы с учетной записью а также логгинирование
+            </summary>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.AccountController.Login(Clt.Logic.Models.Account.LoginModel)">
+            <summary>
+            Войти по Email
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.AccountController.LoginByPhone(Clt.Logic.Models.Account.LoginByPhoneNumberModel)">
+            <summary>
+            Войти по номеру телефона
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.AccountController.RegisterAndSignIn(Clt.Logic.Models.Account.RegisterModel)">
+            <summary>
+            Зарегистрироваться и войти
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.AccountController.Register(Clt.Logic.Models.Account.RegisterModel)">
+            <summary>
+            Зарегистрироваться
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.AccountController.LogOut">
+            <summary>
+            Разлогиниться в системе
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xdoc.Api.Controllers.Base.BaseApiController">
+            <inheritdoc />
+            <summary>
+            Базовый абстрактный контроллер в котором собраны общие методы и свойства
+            </summary>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.Base.BaseApiController.#ctor(Xdoc.Model.Contexts.XdocDbContext,Xdoc.Logic.Services.ApplicationSignInManager,Xdoc.Logic.Services.ApplicationUserManager,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <inheritdoc />
+        </member>
+        <member name="F:Xdoc.Api.Controllers.Base.BaseApiController.RoleManager">
+            <summary>
+            Менеджер ролей
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.CookieManager">
+            <summary>
+            Менеджер для работы с куками
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.AuthenticationManager">
+            <summary>
+            Менеджер авторизации
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.Context">
+            <summary>
+            Контекст для работы с бд
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.ContextWrapper">
+            <summary>
+            Обёртка для контекста
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.SignInManager">
+            <summary>
+            Менеджер авторизации
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.UserManager">
+            <summary>
+            Менеджер для работы с пользователями
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.HttpContextAccessor">
+            <summary>
+            Контекст доступа к запросу
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.UserId">
+            <summary>
+            Идентификатор текущего залогиненного пользователя
+            </summary>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.Base.BaseApiController.Dispose(System.Boolean)">
+            <inheritdoc />
+            <summary>
+            Удаление объекта из памяти
+            </summary>
+            <param name="disposing"></param>
+        </member>
+    </members>
+</doc>
