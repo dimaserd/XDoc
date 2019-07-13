@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.4" />
     <PackageReference Include="NetCroco.WebApplication" Version="1.0.9" />
   </ItemGroup>
 
