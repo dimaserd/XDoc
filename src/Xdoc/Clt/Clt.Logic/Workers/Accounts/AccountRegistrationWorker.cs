@@ -6,7 +6,6 @@ using Croco.Core.Common.Models;
 using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xdoc.Logic.Workers;
@@ -15,13 +14,32 @@ using Xdoc.Model.Entities;
 
 namespace Clt.Logic.Workers.Accounts
 {
+
     public class AccountRegistrationWorker : XDocBaseWorker
     {
         public AccountRegistrationWorker(IUserContextWrapper<XdocDbContext> contextWrapper) : base(contextWrapper)
         {
         }
 
-        public async Task<BaseApiResponse<ClientModel>> RegisterAsync(RegisterModel model, SignInManager<ApplicationUser> userManager)
+
+        private ApplicationUser RegisteredUser { get; set; }
+
+        public async Task<BaseApiResponse<ClientModel>> RegisterAndSignInAsync(RegisterModel model, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        {
+            var result = await RegisterAsync(model, userManager);
+
+            if (!result.IsSucceeded)
+            {
+                return result;
+            }
+
+            //авторизация пользователя в системе
+            await signInManager.SignInAsync(RegisteredUser, false);
+
+            return new BaseApiResponse<ClientModel>(true, "Регистрация и Авторизация прошла успешно", result.ResponseObject);
+        }
+
+        public async Task<BaseApiResponse<ClientModel>> RegisterAsync(RegisterModel model, UserManager<ApplicationUser> userManager)
         {
 
             if (IsAuthenticated)
@@ -29,26 +47,26 @@ namespace Clt.Logic.Workers.Accounts
                 return new BaseApiResponse<ClientModel>(false, "Вы не можете регистрироваться, так как вы авторизованы в системе");
             }
 
-            var result = await RegisterHelpMethodAsync(model, userManager.UserManager);
+            var result = await RegisterHelpMethodAsync(model, userManager);
 
             if (!result.IsSucceeded)
             {
-                return result;
+                return new BaseApiResponse<ClientModel>(result);
             }
 
-            var user = result.ResponseObject;
+            var regResult = result.ResponseObject;
 
-            var eve = new ClientRegisteredEvent
+            RegisteredUser = regResult.User;
+
+            Application.EventPublisher.Publish(new ClientRegisteredEvent
             {
-                ClientId = user.Id
-            };
+                ClientId = regResult.Client.Id
+            });
 
-            Application.EventPublisher.Publish(eve);
-
-            return new BaseApiResponse<ClientModel>(true, "Регистрация прошла успешно.", user);
+            return new BaseApiResponse<ClientModel>(true, "Регистрация прошла успешно.", ClientModel.ToClientModel(regResult.Client));
         }
 
-        private async Task<BaseApiResponse<ClientModel>> RegisterHelpMethodAsync(RegisterModel model, UserManager<ApplicationUser> userManager)
+        private async Task<BaseApiResponse<ClientRegisteredResult>> RegisterHelpMethodAsync(RegisterModel model, UserManager<ApplicationUser> userManager)
         {
             var user = new ApplicationUser
             {
@@ -60,14 +78,14 @@ namespace Clt.Logic.Workers.Accounts
 
             if (!checkResult.IsSucceeded)
             {
-                return new BaseApiResponse<ClientModel>(checkResult.IsSucceeded, checkResult.Message);
+                return new BaseApiResponse<ClientRegisteredResult>(checkResult.IsSucceeded, checkResult.Message);
             }
 
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
             {
-                return new BaseApiResponse<ClientModel>(false, result.Errors.ToList().First().Description);
+                return new BaseApiResponse<ClientRegisteredResult>(false, result.Errors.First().Description);
             }
 
             var client = new Client
@@ -81,7 +99,11 @@ namespace Clt.Logic.Workers.Accounts
 
             clientRepo.CreateHandled(client);
 
-            return await TrySaveChangesAndReturnResultAsync("", ClientModel.ToClientModel(client));
+            return await TrySaveChangesAndReturnResultAsync("Ok", new ClientRegisteredResult
+            {
+                Client = client,
+                User = user
+            });
         }
 
         private async Task<BaseApiResponse> CheckUserAsync(ApplicationUser user)
@@ -110,8 +132,5 @@ namespace Clt.Logic.Workers.Accounts
 
             return new BaseApiResponse(true, "");
         }
-
-
-
     }
 }

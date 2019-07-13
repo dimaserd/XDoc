@@ -9,8 +9,4 @@
     <ProjectReference Include="..\..\XDoc.Logic\Xdoc.Logic.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Account\" />
-  </ItemGroup>
-
 </Project>

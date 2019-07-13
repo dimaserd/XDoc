@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Clt\Clt.Logic\Clt.Logic.csproj" />
+    <ProjectReference Include="..\XDoc.Logic\Xdoc.Logic.csproj" />
   </ItemGroup>
 
 </Project>
