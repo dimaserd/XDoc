@@ -1,7 +1,9 @@
-﻿using FocLab.Model.Entities.Users.Default;
+﻿using Croco.Core.Loggers;
+using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 using Xdoc.Model.Entities.Users.Default;
 
 namespace Xdoc.Model.Contexts
@@ -33,6 +35,11 @@ namespace Xdoc.Model.Contexts
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
             });
+        }
+
+        public ExceptionLogger GetLogger()
+        {
+            return new ExceptionLogger(this, () => DateTime.Now);
         }
     }
 }

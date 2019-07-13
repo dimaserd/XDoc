@@ -13,7 +13,7 @@ using Xdoc.Logic.Workers;
 using Xdoc.Model.Contexts;
 using Xdoc.Model.Entities;
 
-namespace Clt.Logic.Workers
+namespace Clt.Logic.Workers.Accounts
 {
     public class AccountRegistrationWorker : XDocBaseWorker
     {
