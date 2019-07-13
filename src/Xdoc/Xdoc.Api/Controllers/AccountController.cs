@@ -12,8 +12,6 @@ using Xdoc.Model.Contexts;
 
 namespace Xdoc.Api.Controllers
 {
-
-    /// <inheritdoc />
     /// <summary>
     /// Предоставляет методы для работы с учетной записью а также логгинирование
     /// </summary>

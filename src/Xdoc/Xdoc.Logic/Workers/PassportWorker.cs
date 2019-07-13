@@ -15,6 +15,11 @@ namespace Xdoc.Logic.Workers
         {
         }
 
+        /// <summary>
+        /// Создать или обновить паспорт клиента
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<BaseApiResponse> CreateOrUpdateClientPassport(RussianFederationPassportModel model)
         {
             if(!IsAuthenticated)

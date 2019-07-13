@@ -215,5 +215,12 @@
               Ищет локализованную строку, похожую на Вы не можете редактировать пользователя, так как он является Супер-Администратором.
             </summary>
         </member>
+        <member name="M:Xdoc.Logic.Workers.PassportWorker.CreateOrUpdateClientPassport(Xdoc.Logic.Models.RussianFederationPassportModel)">
+            <summary>
+            Создать или обновить паспорт клиента
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
