@@ -35,7 +35,7 @@ namespace Xdoc.Api.Controllers
         /// <returns></returns>
         [HttpPost("Login/ByEmail")]
         [ProducesDefaultResponseType(typeof(BaseApiResponse<LoginResultModel>))]
-        public Task<BaseApiResponse<LoginResultModel>> Login(LoginModel model)
+        public Task<BaseApiResponse<LoginResultModel>> Login([FromForm]LoginModel model)
         {
             return AccountLoginWorker.LoginAsync(model, SignInManager);
         }
@@ -47,7 +47,7 @@ namespace Xdoc.Api.Controllers
         /// <returns></returns>
         [HttpPost("Login/ByPhone")]
         [ProducesDefaultResponseType(typeof(BaseApiResponse<LoginResultModel>))]
-        public Task<BaseApiResponse<LoginResultModel>> LoginByPhone(LoginByPhoneNumberModel model)
+        public Task<BaseApiResponse<LoginResultModel>> LoginByPhone([FromForm]LoginByPhoneNumberModel model)
         {
             return AccountLoginWorker.LoginByPhoneNumberAsync(model, SignInManager);
         }
@@ -63,7 +63,7 @@ namespace Xdoc.Api.Controllers
         /// <returns></returns>
         [HttpPost("RegisterAndSignIn")]
         [ProducesDefaultResponseType(typeof(BaseApiResponse<ClientModel>))]
-        public Task<BaseApiResponse<ClientModel>> RegisterAndSignIn(RegisterModel model)
+        public Task<BaseApiResponse<ClientModel>> RegisterAndSignIn([FromForm]RegisterModel model)
         {
             return AccountRegistrationWorker.RegisterAndSignInAsync(model, UserManager, SignInManager);
         }
@@ -75,7 +75,7 @@ namespace Xdoc.Api.Controllers
         /// <returns></returns>
         [HttpPost("Register")]
         [ProducesDefaultResponseType(typeof(BaseApiResponse<ClientModel>))]
-        public Task<BaseApiResponse<ClientModel>> Register(RegisterModel model)
+        public Task<BaseApiResponse<ClientModel>> Register([FromForm]RegisterModel model)
         {
             return AccountRegistrationWorker.RegisterAsync(model, UserManager);
         }

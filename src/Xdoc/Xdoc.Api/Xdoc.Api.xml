@@ -118,6 +118,12 @@
             <param name="userManager"></param>
             <param name="httpContextAccessor"></param>
         </member>
+        <member name="M:Xdoc.Api.Controllers.DocsController.GetClientDocuments">
+            <summary>
+            Получить документы клиента
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Xdoc.Api.Controllers.DocsController.CreateOrUpdateClientPassport(Xdoc.Logic.Models.RussianFederationPassportModel)">
             <summary>
             Создать или обновить паспорт клиента

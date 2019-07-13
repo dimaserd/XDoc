@@ -4,10 +4,45 @@
         <name>Xdoc.Logic</name>
     </assembly>
     <members>
-        <member name="P:Xdoc.Logic.Models.RegisterClientWithPassport.Passport">
+        <member name="M:Xdoc.Logic.Implementations.HangfireTaskEnqueuer.Enqueue(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task}})">
             <summary>
-            Паспорт клиента
+            Поставить задачу в очередь
             </summary>
+            <param name="methodCall"></param>
+        </member>
+        <member name="T:Xdoc.Logic.Workers.ClientDocumentsModel">
+            <summary>
+            Документы клиента
+            </summary>
+        </member>
+        <member name="P:Xdoc.Logic.Workers.ClientDocumentsModel.Passport">
+            <summary>
+            Паспорт
+            </summary>
+        </member>
+        <member name="T:Xdoc.Logic.Workers.ClientDocsWorker">
+            <summary>
+            Предоставляет методы для работы с документами клиента
+            </summary>
+        </member>
+        <member name="M:Xdoc.Logic.Workers.ClientDocsWorker.#ctor(Croco.Core.Abstractions.ContextWrappers.IUserRequestWithRepositoryFactory)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Xdoc.Logic.Workers.ClientDocsWorker.CreateOrUpdateClientPassport(Xdoc.Logic.Models.RussianFederationPassportModel)">
+            <summary>
+            Создать или обновить паспорт клиента
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Logic.Workers.ClientDocsWorker.GetClientDocs">
+            <summary>
+            Получить документы клиента
+            </summary>
+            <returns></returns>
         </member>
         <member name="P:Xdoc.Logic.Models.RussianFederationPassportModel.IssuedBy">
             <summary>
@@ -214,13 +249,6 @@
             <summary>
               Ищет локализованную строку, похожую на Вы не можете редактировать пользователя, так как он является Супер-Администратором.
             </summary>
-        </member>
-        <member name="M:Xdoc.Logic.Workers.PassportWorker.CreateOrUpdateClientPassport(Xdoc.Logic.Models.RussianFederationPassportModel)">
-            <summary>
-            Создать или обновить паспорт клиента
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>

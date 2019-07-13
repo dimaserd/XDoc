@@ -2,6 +2,7 @@
 using Croco.Core.Common.Models;
 using Croco.Core.Logic.Workers;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using Xdoc.Logic.Models;
 using Xdoc.Model.Entities;
@@ -9,9 +10,17 @@ using Xdoc.Model.Enumerations;
 
 namespace Xdoc.Logic.Workers
 {
-    public class PassportWorker : BaseCrocoWorker
+
+    /// <summary>
+    /// Предоставляет методы для работы с документами клиента
+    /// </summary>
+    public class ClientDocsWorker : BaseCrocoWorker
     {
-        public PassportWorker(IUserRequestWithRepositoryFactory context) : base(context)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="context"></param>
+        public ClientDocsWorker(IUserRequestWithRepositoryFactory context) : base(context)
         {
         }
 
@@ -51,6 +60,30 @@ namespace Xdoc.Logic.Workers
             repo.CreateHandled(doc);
 
             return await TrySaveChangesAndReturnResultAsync("Паспорт добавлен успешно");
+        }
+
+        /// <summary>
+        /// Получить документы клиента
+        /// </summary>
+        /// <returns></returns>
+        public async Task<BaseApiResponse<ClientDocumentsModel>> GetClientDocs()
+        {
+            if(!IsAuthenticated)
+            {
+                return new BaseApiResponse<ClientDocumentsModel>(false, "Вы не авторизованы");
+            }
+
+            var docRepo = GetRepository<ClientDocument>();
+
+            var clientId = UserId;
+
+            var docs = await docRepo.Query()
+                .Where(x => x.ClientId == clientId)
+                .ToListAsync();
+
+            var model = ClientDocumentsModel.Create(docs);
+
+        return new BaseApiResponse<ClientDocumentsModel>(true, "Ok", model);
         }
     }
 }

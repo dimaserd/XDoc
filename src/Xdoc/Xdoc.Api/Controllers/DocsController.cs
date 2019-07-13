@@ -27,7 +27,18 @@ namespace Xdoc.Api.Controllers
         {
         }
 
-        private PassportWorker PassportWorker => new PassportWorker(ContextWrapper);
+        private ClientDocsWorker ClientDocsWorker => new ClientDocsWorker(ContextWrapper);
+
+        /// <summary>
+        /// Получить документы клиента
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("Client/Get")]
+        [ProducesDefaultResponseType(typeof(BaseApiResponse<ClientDocumentsModel>))]
+        public Task<BaseApiResponse<ClientDocumentsModel>> GetClientDocuments()
+        {
+            return ClientDocsWorker.GetClientDocs();
+        }
 
         /// <summary>
         /// Создать или обновить паспорт клиента
@@ -36,9 +47,11 @@ namespace Xdoc.Api.Controllers
         /// <returns></returns>
         [HttpPost("Passport/CreateOrUpdate")]
         [ProducesDefaultResponseType(typeof(BaseApiResponse))]
-        public Task<BaseApiResponse> CreateOrUpdateClientPassport(RussianFederationPassportModel model)
+        public Task<BaseApiResponse> CreateOrUpdateClientPassport([FromForm]RussianFederationPassportModel model)
         {
-            return PassportWorker.CreateOrUpdateClientPassport(model);
+            return ClientDocsWorker.CreateOrUpdateClientPassport(model);
         }
+
+
     }
 }
