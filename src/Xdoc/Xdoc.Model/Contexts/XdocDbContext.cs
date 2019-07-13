@@ -34,8 +34,14 @@ namespace Xdoc.Model.Contexts
             return new XdocDbContext(optionsBuilder.Options);
         }
 
-        public DbSet<Client> Clients { get; set; } 
+        public DbSet<Client> Clients { get; set; }
 
         public DbSet<ClientDocument> ClientDocuments { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            ClientDocument.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

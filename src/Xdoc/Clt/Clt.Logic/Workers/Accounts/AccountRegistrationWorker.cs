@@ -71,14 +71,15 @@ namespace Clt.Logic.Workers.Accounts
             var user = new ApplicationUser
             {
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Email
             };
 
             var checkResult = await CheckUserAsync(user);
 
             if (!checkResult.IsSucceeded)
             {
-                return new BaseApiResponse<ClientRegisteredResult>(checkResult.IsSucceeded, checkResult.Message);
+                return new BaseApiResponse<ClientRegisteredResult>(checkResult);
             }
 
             var result = await userManager.CreateAsync(user, model.Password);

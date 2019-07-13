@@ -4,6 +4,8 @@ using System.IO;
 using Croco.Core.Application;
 using Croco.Core.Application.Options;
 using Croco.Core.Common.Enumerations;
+using Croco.Core.EventSource;
+using Croco.Core.EventSource.Abstractions;
 using Croco.Core.Logic.Models.Files;
 using Croco.WebApplication.Application;
 using CrocoShop.Implementations;
@@ -144,6 +146,25 @@ namespace Xdoc
             });
         }
 
+        private ICrocoEventPublisher GetEventPublisher()
+        {
+            var options = new CrocoEventListenerOptions
+            {
+                TaskEnqueuer = new HangfireTaskEnqueuer(),
+            };
+
+            var evListener = new CrocoEventListener(options);
+
+            //Подписка обработчиками на события
+            
+            var publisher = new CrocoEventPublisher(new CrocoEventPublisherOptions
+            {
+                EventListener = evListener
+            });
+
+            return publisher;
+        }
+
         private void SetCrocoApplication(IServiceCollection services)
         {
             var memCache = new MemoryCache(new MemoryCacheOptions());
@@ -152,6 +173,7 @@ namespace Xdoc
 
             var appOptions = new CrocoWebApplicationOptions(new ApplicationServerVirtualPathMapper(Env))
             {
+                EventPublisher = GetEventPublisher(),
                 CacheManager = new ApplicationCacheManager(memCache),
                 GetDbContext = () => XdocDbContext.Create(Configuration),
                 FileOptions = new CrocoFileOptions

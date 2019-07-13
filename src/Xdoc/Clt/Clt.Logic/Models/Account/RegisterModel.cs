@@ -9,15 +9,6 @@ namespace Clt.Logic.Models.Account
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
 
-        [Display(Name = "Имя")]
-        public string Name { get; set; }
-
-        [Display(Name = "Фамилия")]
-        public string Surname { get; set; }
-
-        [Display(Name = "Отчество")]
-        public string Patronymic { get; set; }
-
         [Display(Name = "Телефон")]
         public string PhoneNumber { get; set; }
 
@@ -26,9 +17,5 @@ namespace Clt.Logic.Models.Account
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Подтверждение пароля")]
-        public string ConfirmPassword { get; set; }
     }
 }

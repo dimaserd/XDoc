@@ -1,4 +1,5 @@
 ﻿using Croco.Core.Loggers;
+using Croco.Core.Model.Entities.Store;
 using FocLab.Model.Entities.Users.Default;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -36,6 +37,14 @@ namespace Xdoc.Model.Contexts
                     .IsRequired();
             });
         }
+
+        #region Схема Store        
+        public DbSet<LoggedUserInterfaceAction> UserInterfaceActions { get; set; }
+
+        public DbSet<LoggedApplicationAction> ApplicationActions { get; set; }
+
+        public DbSet<Snapshot> Snapshots { get; set; }
+        #endregion
 
         public ExceptionLogger GetLogger()
         {
