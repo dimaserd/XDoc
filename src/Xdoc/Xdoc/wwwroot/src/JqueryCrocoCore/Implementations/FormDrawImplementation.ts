@@ -103,7 +103,7 @@
 
         const dataTypeAttr = `${CrocoAppCore.Application.FormDataHelper.DataTypeAttributeName}=${cSharpType.toString()}`;
 
-        const typeAndStep = propBlock.TextBoxData.IsInteger ? `type="number" step="${propBlock.TextBoxData.IntStep}"` : `type="text"`;
+        const typeAndStep = propBlock.TextBoxData?.IsInteger ? `type="number" step="${propBlock.TextBoxData.IntStep}"` : `type="text"`;
 
         const html = `<label for="${typeDescription.PropertyDescription.PropertyName}">${propBlock.LabelText}</label>
                 <input${idAttr} autocomplete="off" class="form-control m-input" name="${propName}" ${dataTypeAttr} ${typeAndStep} value="${value}" />`;

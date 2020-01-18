@@ -49,9 +49,21 @@
   },
 
   {
+    "outputFileName": "wwwroot/src/App/index.js",
+    "inputFiles": [
+      "wwwroot/src/App/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
     "outputFileName": "wwwroot/js/Core.js",
     "inputFiles": [
       "wwwroot/src/Core/index.js",
+      "wwwroot/src/App/index.js",
       "wwwroot/src/FormTypeDrawer/FormTypeDrawer.js",
       "wwwroot/src/JqueryCrocoCore/index.js"
     ],

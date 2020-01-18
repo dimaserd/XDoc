@@ -250,6 +250,134 @@ var CSharpType;
     CSharpType[CSharpType["Boolean"] = "Boolean"] = "Boolean";
     CSharpType[CSharpType["DateTime"] = "DateTime"] = "DateTime";
 })(CSharpType || (CSharpType = {}));
+var DatePickerUtils = /** @class */ (function () {
+    function DatePickerUtils() {
+    }
+    DatePickerUtils.InitDictionary = function () {
+        $.fn.datepicker['dates']['ru'] = {
+            days: ['понедельник', 'воскресенье', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+            daysShort: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+            daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн',
+                'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+            today: "Today"
+        };
+    };
+    DatePickerUtils.SetDatePicker = function (datePickerId, elementIdToUpdate, dateValue) {
+        if (dateValue === void 0) { dateValue = null; }
+        var datePickerElement = document.getElementById(datePickerId);
+        if (datePickerElement == null) {
+            alert("Utils.SetDatePicker \u042D\u043B\u0435\u043C\u0435\u043D\u0442 \u0441 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u043C " + datePickerId + " \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435");
+        }
+        var toUpdateElement = document.getElementById(elementIdToUpdate);
+        if (toUpdateElement == null) {
+            alert("Utils.SetDatePicker \u042D\u043B\u0435\u043C\u0435\u043D\u0442 \u0441 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u043C " + elementIdToUpdate + " \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435");
+        }
+        var selector = "#" + datePickerId;
+        $(selector).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            language: "ru",
+            zIndexOffset: 1000
+        });
+        DatePickerUtils.ActiveDatePickers.push({
+            BackElementId: elementIdToUpdate,
+            DatePickerId: datePickerId
+        });
+        //Ставлю обработчик на изменение основного элемента
+        $(selector).on("change", function (e) {
+            var comingValue = e.target.value;
+            var dateValue = new Date(DatePickerUtils.DDMMYYYYToMMDDDDYYYYString(comingValue));
+            if (isNaN(dateValue.getTime())) {
+                dateValue = null;
+            }
+            var valueToSet = dateValue == null ? CrocoAppCore.Application.FormDataHelper.NullValue
+                //Убираем добавленные таймзоны а затем отсекаем время
+                : new Date(dateValue.getTime() - (dateValue.getTimezoneOffset() * 60000)).toISOString().split("T")[0];
+            console.log("Utils.DatePickerValueChanged", dateValue, valueToSet);
+            //Устанавливаем дату обрезая время
+            document.getElementById(elementIdToUpdate).value = valueToSet;
+        });
+        //Вкидываю событие об изменении чтобы фейковый элемент подхватил данные с дэйтпикера
+        var event = new Event("change");
+        var element = document.getElementById(datePickerId);
+        element.dispatchEvent(event);
+        if (dateValue !== undefined) {
+            DatePickerUtils.SetDateToDatePicker(datePickerId, dateValue);
+        }
+    };
+    DatePickerUtils.SetDateToDatePicker = function (datePickerId, dateValue) {
+        var selector = "#" + datePickerId;
+        $(selector).datepicker("setDate", dateValue);
+    };
+    DatePickerUtils.DDMMYYYYToMMDDDDYYYYString = function (s) {
+        var bits = s.split("/");
+        return bits[1] + "/" + bits[0] + "/" + bits[2];
+    };
+    DatePickerUtils.GetDateFromDatePicker = function (inputId) {
+        var elem = DatePickerUtils.ActiveDatePickers.find(function (x) { return x.DatePickerId === inputId; });
+        if (elem == null) {
+            alert("DatePicker \u0441 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u043C " + inputId + " \u043D\u0435 \u0438\u043D\u0438\u0446\u0438\u0430\u043B\u0438\u0438\u0440\u043E\u0432\u0430\u043D \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435");
+        }
+        return new Date(document.getElementById(elem.BackElementId).value);
+    };
+    DatePickerUtils.ActiveDatePickers = [];
+    return DatePickerUtils;
+}());
+DatePickerUtils.InitDictionary();
+
+var ImageSizeType;
+(function (ImageSizeType) {
+    ImageSizeType[ImageSizeType["Icon"] = "Icon"] = "Icon";
+    ImageSizeType[ImageSizeType["Medium"] = "Medium"] = "Medium";
+    ImageSizeType[ImageSizeType["Small"] = "Small"] = "Small";
+    ImageSizeType[ImageSizeType["Original"] = "Original"] = "Original";
+})(ImageSizeType || (ImageSizeType = {}));
+
+var TimePickerUtils = /** @class */ (function () {
+    function TimePickerUtils() {
+    }
+    TimePickerUtils.SetTimePicker = function (elementId) {
+        $("#" + elementId).timepicker();
+    };
+    TimePickerUtils.GetTimeValueInMinutes = function (elementId) {
+        var elem = document.getElementById(elementId);
+        if (elem == null) {
+            alert("\u042D\u043B\u0435\u043C\u0435\u043D\u0442 \u0441 \u0438\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u043C '" + elementId + "' \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D \u043D\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435");
+            return;
+        }
+        var value = elem.value;
+        if (value == '12:00 AM') {
+            return 0;
+        }
+        var initBits = value.split(' ');
+        var timeBits = initBits[0].split(':').map(function (x) { return Number(x); });
+        var result = timeBits[0] * 60 + timeBits[1];
+        return initBits[1] == 'PM' ? result + 12 * 60 : result;
+    };
+    return TimePickerUtils;
+}());
+
+/// <reference path="../../../node_modules/@types/bootstrap/index.d.ts"/>
+/// <reference path="../../../node_modules/@types/bootstrap-datepicker/index.d.ts"/>
+var Utils = /** @class */ (function () {
+    function Utils() {
+    }
+    Utils.FillSelect = function (select, array, htmlFunc, valueFunc) {
+        for (var i = 0; i < array.length; i++) {
+            var opt = document.createElement("option");
+            opt.innerHTML = htmlFunc(array[i]);
+            opt.value = valueFunc(array[i]);
+            select.append(opt);
+        }
+    };
+    Utils.GetImageLinkByFileId = function (fileId, sizeType) {
+        return "/FileCopies/Images/" + sizeType.toString() + "/" + fileId + ".jpg";
+    };
+    return Utils;
+}());
 var UserInterfaceType;
 (function (UserInterfaceType) {
     UserInterfaceType[UserInterfaceType["CustomInput"] = "CustomInput"] = "CustomInput";
@@ -788,13 +916,13 @@ var FormDrawImplementation = /** @class */ (function () {
         return this.RenderTextBoxInner(typeDescription, wrap, null, this.GetPropertyName(typeDescription.PropertyDescription.PropertyName));
     };
     FormDrawImplementation.prototype.RenderTextBoxInner = function (typeDescription, wrap, id, propName) {
-        var _a;
+        var _a, _b;
         var value = ValueProviderHelper.GetStringValueFromValueProvider(typeDescription, this._model.ValueProvider);
         var idAttr = id == null ? "" : " id=\"" + id + "\"";
         var propBlock = this.GetPropertyBlock(typeDescription.PropertyDescription.PropertyName);
         var cSharpType = ((_a = propBlock.TextBoxData) === null || _a === void 0 ? void 0 : _a.IsInteger) ? CSharpType.Int : CSharpType.String;
         var dataTypeAttr = CrocoAppCore.Application.FormDataHelper.DataTypeAttributeName + "=" + cSharpType.toString();
-        var typeAndStep = propBlock.TextBoxData.IsInteger ? "type=\"number\" step=\"" + propBlock.TextBoxData.IntStep + "\"" : "type=\"text\"";
+        var typeAndStep = ((_b = propBlock.TextBoxData) === null || _b === void 0 ? void 0 : _b.IsInteger) ? "type=\"number\" step=\"" + propBlock.TextBoxData.IntStep + "\"" : "type=\"text\"";
         var html = "<label for=\"" + typeDescription.PropertyDescription.PropertyName + "\">" + propBlock.LabelText + "</label>\n                <input" + idAttr + " autocomplete=\"off\" class=\"form-control m-input\" name=\"" + propName + "\" " + dataTypeAttr + " " + typeAndStep + " value=\"" + value + "\" />";
         if (!wrap) {
             return html;
@@ -1226,3 +1354,4 @@ var CrocoAppCore = /** @class */ (function () {
     };
     return CrocoAppCore;
 }());
+CrocoAppCore.InitFields();

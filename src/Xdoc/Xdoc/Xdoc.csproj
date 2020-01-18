@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\src\AppViews\HomeIndexView.ts" />
     <Content Remove="wwwroot\src\JqueryCrocoCore\Implementations\GenericInterfaceAppHelper.ts" />
   </ItemGroup>
 
