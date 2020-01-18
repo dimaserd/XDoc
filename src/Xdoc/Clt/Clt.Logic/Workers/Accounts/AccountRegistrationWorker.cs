@@ -1,8 +1,6 @@
 ﻿using Clt.Contract.Events;
 using Clt.Logic.Models;
 using Clt.Logic.Models.Account;
-using Croco.Core.Abstractions.ContextWrappers;
-using Croco.Core.Common.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

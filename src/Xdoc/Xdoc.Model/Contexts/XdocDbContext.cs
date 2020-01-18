@@ -1,10 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Croco.Core.Data.Implementations.DbAudit.Models;
+using Croco.Core.EventSourcing.Implementations.StatusLog.Models;
+using Croco.Core.Model.Entities;
+using Croco.Core.Model.Entities.Store;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Xdoc.Model.Entities;
+using Zoo.Core;
+using Zoo.Core.Abstractions;
 
 namespace Xdoc.Model.Contexts
 {
-    public class XdocDbContext : ApplicationDbContext
+    public class XdocDbContext : ApplicationDbContext, IStoreContext
     {
         public XdocDbContext(DbContextOptions options) : base(options)
         {
@@ -33,6 +39,23 @@ namespace Xdoc.Model.Contexts
 
             return new XdocDbContext(optionsBuilder.Options);
         }
+
+        #region IStore
+        public DbSet<RobotTask> RobotTasks { get; set; }
+
+        public DbSet<LoggedUserInterfaceAction> LoggedUserInterfaceActions { get; set; }
+
+        public DbSet<LoggedApplicationAction> LoggedApplicationActions { get; set; }
+
+        public DbSet<AuditLog> AuditLogs { get; set; }
+
+        public DbSet<IntegrationMessageLog> IntegrationMessageLogs { get; set; }
+
+        public DbSet<IntegrationMessageStatusLog> IntegrationMessageStatusLogs { get; set; }
+
+        public DbSet<WebAppRequestContextLog> WebAppRequestContextLogs { get; set; }
+        #endregion
+
 
         public DbSet<Client> Clients { get; set; }
 

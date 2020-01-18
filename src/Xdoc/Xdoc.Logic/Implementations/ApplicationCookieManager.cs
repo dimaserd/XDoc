@@ -35,7 +35,7 @@ namespace Xdoc.Logic.Implementations
 
         public T GetValue<T>(string key) where T : class
         {
-            if (typeof(T) == typeof(string))
+            if(typeof(T) == typeof(string))
             {
                 throw new ApplicationException("нельзя использовать перезагрузку с типом string");
             }

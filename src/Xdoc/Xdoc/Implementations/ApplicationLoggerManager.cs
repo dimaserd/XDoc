@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Croco.Core.Application;
+using Croco.Core.Implementations.AmbientContext;
+using Croco.Core.Implementations.TransactionHandlers;
 using Xdoc.Abstractions;
 
-namespace CrocoShop.Implementations
+namespace Xdoc.Implementations
 {
     public class ApplicationLoggerManager : ILoggerManager
     {
         public Task LogExceptionAsync(Exception ex)
         {
-            using (var db = CrocoApp.Application.GetDbContext())
+            if (ex == null)
             {
-                var logger = new Croco.Core.Loggers.ExceptionLogger(db, () => DateTime.Now);
-                return logger.LogExceptionAsync(ex);
+                return Task.CompletedTask;
             }
+
+            return new CrocoTransactionHandler(() => new SystemCrocoAmbientContext()).ExecuteAndCloseTransaction(ctx =>
+            {
+                ctx.Logger.LogException(ex);
+
+                return Task.CompletedTask;
+            });
         }
     }
 }

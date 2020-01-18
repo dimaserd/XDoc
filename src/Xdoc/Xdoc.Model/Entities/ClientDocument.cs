@@ -1,12 +1,11 @@
-﻿using Croco.Core.Model.Interfaces.Auditable;
-using Croco.Core.Model.Models;
+﻿using Croco.Core.Model.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using Xdoc.Model.Enumerations;
 
 namespace Xdoc.Model.Entities
 {
-    public class ClientDocument : AuditableEntityBase, IAuditableComposedId
+    public class ClientDocument : AuditableEntityBase
     {
         [ForeignKey(nameof(Client))]
         public string ClientId { get; set; }
@@ -21,11 +20,6 @@ namespace Xdoc.Model.Entities
         {
             modelBuilder.Entity<ClientDocument>()
                 .HasKey(p => new { p.ClientId, p.Type });
-        }
-
-        public string GetComposedId()
-        {
-            return $"{nameof(ClientId)}={ClientId}&{nameof(Type)}={Type}";
         }
     }
 }

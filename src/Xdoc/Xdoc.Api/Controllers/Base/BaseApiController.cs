@@ -1,100 +1,56 @@
 ﻿using Clt.Logic.Abstractions;
 using Clt.Logic.Implementations;
-using Croco.Core.ContextWrappers;
+using Croco.Core.Abstractions.Settings;
+using Croco.Core.Application;
 using Croco.WebApplication.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using Xdoc.Logic.Extensions;
 using Xdoc.Logic.Implementations;
 using Xdoc.Logic.Services;
 using Xdoc.Model.Contexts;
+using Xdoc.Model.Entities.Users.Default;
 
-namespace Xdoc.Api.Controllers.Base
+namespace CrocoShop.Api.Controllers.Base
 {
     /// <inheritdoc />
     /// <summary>
     /// Базовый абстрактный контроллер в котором собраны общие методы и свойства
     /// </summary>
-    public class BaseApiController : Controller
+    public class BaseApiController : CrocoGenericController<XdocDbContext, ApplicationUser>
     {
         /// <inheritdoc />
-        public BaseApiController(XdocDbContext context, ApplicationSignInManager signInManager, ApplicationUserManager userManager, IHttpContextAccessor httpContextAccessor)
+        public BaseApiController(XdocDbContext context, ApplicationSignInManager signInManager, ApplicationUserManager userManager, IHttpContextAccessor httpContextAccessor) : base(context, signInManager, userManager, x => x.Identity.GetUserId(), httpContextAccessor)
         {
-            Context = context;
-            SignInManager = signInManager;
-            UserManager = userManager;
-            HttpContextAccessor = httpContextAccessor;
         }
 
         #region Поля
 
-        //TODO Impelement RoleManager
         /// <summary>
         /// Менеджер ролей
         /// </summary>
-        public RoleManager<IdentityRole> RoleManager = null;
-
-        private UserContextWrapper<XdocDbContext> _contextWrapper;
+        public RoleManager<ApplicationRole> RoleManager = null;
         #endregion
 
         #region Свойства
 
         /// <summary>
+        /// Менеджер настроек пользователя
+        /// </summary>
+        /// <returns></returns>
+        protected IUserSettingManager UserSettingManager => new MyApplicationSettingManager(CookieManager, AmbientContext);
+
+        /// <summary>
         /// Менеджер для работы с куками
         /// </summary>
         protected ICookieManager CookieManager => new ApplicationCookieManager(HttpContextAccessor);
-
+        
         /// <summary>
         /// Менеджер авторизации
         /// </summary>
-        protected IApplicationAuthenticationManager AuthenticationManager => new ApplicationAuthenticationManager(SignInManager);
-
-        /// <summary>
-        /// Контекст для работы с бд
-        /// </summary>
-        public XdocDbContext Context
-        {
-            get;
-        }
-
-        /// <summary>
-        /// Обёртка для контекста
-        /// </summary>
-        public UserContextWrapper<XdocDbContext> ContextWrapper => _contextWrapper ?? (_contextWrapper = new UserContextWrapper<XdocDbContext>(User, Context, x => x.Identity.GetUserId()));
-
-        /// <summary>
-        /// Менеджер авторизации
-        /// </summary>
-        public ApplicationSignInManager SignInManager
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Менеджер для работы с пользователями
-        /// </summary>
-        public ApplicationUserManager UserManager
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Контекст доступа к запросу
-        /// </summary>
-        public IHttpContextAccessor HttpContextAccessor { get; }
-
-
-        /// <summary>
-        /// Идентификатор текущего залогиненного пользователя
-        /// </summary>
-        protected string UserId => User.Identity.GetUserId();
+        protected IApplicationAuthenticationManager AuthenticationManager => new ApplicationAuthenticationManager(SignInManager); 
 
         #endregion
-
+        
         /// <inheritdoc />
         /// <summary>
         /// Удаление объекта из памяти
@@ -102,27 +58,15 @@ namespace Xdoc.Api.Controllers.Base
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            //Логгируем контекст запроса
+            CrocoApp.Application.RequestContextLogger.LogRequestContext(RequestContext);
+
+            if (RoleManager != null)
             {
-                var toDisposes = new IDisposable[]
-                {
-                    UserManager, Context
-                };
-
-                for (var i = 0; i < toDisposes.Length; i++)
-                {
-                    if (toDisposes[i] == null)
-                    {
-                        continue;
-                    }
-
-                    toDisposes[i].Dispose();
-                    toDisposes[i] = null;
-                }
+                RoleManager.Dispose();
+                RoleManager = null;
             }
-
             base.Dispose(disposing);
         }
     }
-
 }

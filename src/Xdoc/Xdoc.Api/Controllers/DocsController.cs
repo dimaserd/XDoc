@@ -1,4 +1,4 @@
-﻿using Croco.Core.Common.Models;
+﻿using Croco.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

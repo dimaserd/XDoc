@@ -1,6 +1,5 @@
-﻿using Croco.Core.Abstractions.ContextWrappers;
-using Croco.Core.Common.Models;
-using Croco.Core.Logic.Workers;
+﻿using Croco.Core.Abstractions;
+using Croco.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,17 +9,16 @@ using Xdoc.Model.Enumerations;
 
 namespace Xdoc.Logic.Workers
 {
-
     /// <summary>
     /// Предоставляет методы для работы с документами клиента
     /// </summary>
-    public class ClientDocsWorker : BaseCrocoWorker
+    public class ClientDocsWorker : XDocBaseWorker
     {
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="context"></param>
-        public ClientDocsWorker(IUserRequestWithRepositoryFactory context) : base(context)
+        public ClientDocsWorker(ICrocoAmbientContext context) : base(context)
         {
         }
 
@@ -83,7 +81,7 @@ namespace Xdoc.Logic.Workers
 
             var model = ClientDocumentsModel.Create(docs);
 
-        return new BaseApiResponse<ClientDocumentsModel>(true, "Ok", model);
+            return new BaseApiResponse<ClientDocumentsModel>(true, "Ok", model);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using Croco.Core.Model.Interfaces.Auditable;
+﻿using Croco.Core.Abstractions.Data.Entities.HaveId;
 using Croco.Core.Model.Models;
 
 namespace Xdoc.Model.Entities
 {
-    public class Client : AuditableEntityBase, IAuditableStringId
+    public class Client : AuditableEntityBase, IHaveStringId
     {
         public string Id { get; set; }
 
