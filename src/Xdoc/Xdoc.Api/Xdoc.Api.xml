@@ -164,5 +164,12 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Xdoc.Api.Controllers.DocsController.Declension(Zoo.Doc.Declension.Models.HumanModel)">
+            <summary>
+            Склонения для человека
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

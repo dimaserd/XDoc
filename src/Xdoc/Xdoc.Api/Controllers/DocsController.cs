@@ -7,6 +7,7 @@ using Xdoc.Logic.Models;
 using Xdoc.Logic.Services;
 using Xdoc.Logic.Workers;
 using Xdoc.Model.Contexts;
+using Zoo.Doc.Declension.Models;
 
 namespace Xdoc.Api.Controllers
 {
@@ -50,6 +51,23 @@ namespace Xdoc.Api.Controllers
         public Task<BaseApiResponse> CreateOrUpdateClientPassport([FromForm]RussianFederationPassportModel model)
         {
             return ClientDocsWorker.CreateOrUpdateClientPassport(model);
+        }
+
+        /// <summary>
+        /// Склонения для человека
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("Declension")]
+        [ProducesDefaultResponseType(typeof(FullNameDeclension))]
+        public FullNameDeclension Declension([FromForm]HumanModel model)
+        {
+            if(model == null)
+            {
+                return null;
+            }
+
+            return FullNameDeclension.GetByHumanModel(model);
         }
     }
 }
