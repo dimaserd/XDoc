@@ -1,0 +1,559 @@
+﻿@{
+    Layout = null;
+}
+
+<div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="1" m-menu-dropdown-timeout="500" style="position: relative;">
+    <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+        <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
+            <a href="/Admin" class="m-menu__link ">
+                <i class="m-menu__link-icon flaticon-line-graph"></i>
+                <span class="m-menu__link-title">
+                    <span class="m-menu__link-wrap">
+                        <span class="m-menu__link-text">Админ-панель</span>
+                        <span class="m-menu__link-badge">
+                            <span class="m-badge m-badge--danger">2</span>
+                        </span>
+                    </span>
+                </span>
+            </a>
+        </li>
+
+
+        <li class="m-menu__section ">
+            <h4 class="m-menu__section-text">Меню</h4>
+            <i class="m-menu__section-icon flaticon-more-v2"></i>
+        </li>
+
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-box-open"></i>
+                <span class="m-menu__link-text">Контент</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Контент</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/ContentPages" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Контентные страницы</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Portfolio" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Портфолио пользователей</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/PhotoBanner" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Фотобаннеры</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon flaticon-layers"></i>
+                <span class="m-menu__link-text">Товары</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Товары</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Products" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Список товаров</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Products/ShowBulkUpdatable" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Экспорт / Импорт</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/ProductCharacteristic" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Товарные характеристики</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/ProductGroups" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Товарные группы</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/ProductCategories" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Меню товарных категорий</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Shops" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Магазины</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/ColorFilters" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Цвета товара</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Brands" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Список брендов</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+
+                <i class="m-menu__link-icon fas fa-shopping-cart"></i>
+                <span class="m-menu__link-text">Покупки</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Покупки</span>
+                        </span>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Purchases" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">
+                                Список покупок
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Carts" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Список корзин</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+
+                <i class="m-menu__link-icon fas fa-car-side"></i>
+                <span class="m-menu__link-text">Доставки</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Доставки</span>
+                        </span>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Distribution/Index" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">
+                                Города доставки
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/DistributionMetro/Index" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Станции метро</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/DeliveryMethods" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Способы доставки</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-users"></i>
+                <span class="m-menu__link-text">Пользователи</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Users" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Список пользователей</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/UserGroups" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Группы пользователей</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log/Index" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Действия пользователей</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon flaticon-multimedia-1"></i>
+                <span class="m-menu__link-text">Файлы</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Файлы</span>
+                        </span>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/MyFiles/Index" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Файлы в базе данных</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/MyFiles/GetFiles" class="m-menu__link ">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Файловая система</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-comments"></i>
+                <span class="m-menu__link-text">Сообщения</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Сообщения</span>
+                        </span>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Messaging/Index" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Взаимодействия</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+
+        <li class="m-menu__section ">
+            <h4 class="m-menu__section-text">Настройки</h4>
+            <i class="m-menu__section-icon flaticon-more-v2"></i>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-globe"></i>
+                <span class="m-menu__link-text">Настройки</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Настройки</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Settings" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Настройки</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-globe"></i>
+                <span class="m-menu__link-text">Языки</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Языки</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Language" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Список языков</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__section ">
+            <h4 class="m-menu__section-text">Для разработчиков</h4>
+            <i class="m-menu__section-icon flaticon-more-v2"></i>
+        </li>
+
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-bug"></i>
+                <span class="m-menu__link-text">API</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">API</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/swagger" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">HTTP Методы API</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Documentation/Hubs" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">SignalR хабы</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Documentation/JsWorkers" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">JS OPEN-API</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Documentation/CodeGen" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">CodeGen</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-bug"></i>
+                <span class="m-menu__link-text">Кеш системы</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Кеш системы</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Cache/Index" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Кеш системы</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true">
+            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon fas fa-archive"></i>
+                <span class="m-menu__link-text">Логи</span>
+                <i class="m-menu__ver-arrow la la-angle-right"></i>
+            </a>
+            <div class="m-menu__submenu ">
+                <span class="m-menu__arrow"></span>
+                <ul class="m-menu__subnav">
+                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
+                        <span class="m-menu__link">
+                            <span class="m-menu__link-text">Логи</span>
+                        </span>
+                    </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Действия пользователей</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log/ServerExceptions" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Исключения на сервере</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log/ServerLogs" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Логи на сервере</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log/UserInterfaceLogs" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Логи на UI</span>
+                        </a>
+                    </li>
+
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="/Admin/Log/UserInterfaceExceptions" class="m-menu__link">
+                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                <span></span>
+                            </i>
+                            <span class="m-menu__link-text">Исключения на UI</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

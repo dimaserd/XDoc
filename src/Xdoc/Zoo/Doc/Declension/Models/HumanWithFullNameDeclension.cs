@@ -28,5 +28,4 @@ namespace Zoo.Doc.Declension.Models
             }
         }
     }
-
 }
