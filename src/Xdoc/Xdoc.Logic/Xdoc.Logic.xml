@@ -271,5 +271,38 @@
               Ищет локализованную строку, похожую на Вы не можете редактировать пользователя, так как он является Супер-Администратором.
             </summary>
         </member>
+        <member name="T:Xdoc.Logic.Services.ApplicationUserManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Xdoc.Logic.Services.ApplicationUserManager.#ctor(Microsoft.AspNetCore.Identity.IUserStore{Xdoc.Model.Entities.Users.Default.ApplicationUser},Microsoft.Extensions.Options.IOptions{Microsoft.AspNetCore.Identity.IdentityOptions},Microsoft.AspNetCore.Identity.IPasswordHasher{Xdoc.Model.Entities.Users.Default.ApplicationUser},System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IUserValidator{Xdoc.Model.Entities.Users.Default.ApplicationUser}},System.Collections.Generic.IEnumerable{Microsoft.AspNetCore.Identity.IPasswordValidator{Xdoc.Model.Entities.Users.Default.ApplicationUser}},Microsoft.AspNetCore.Identity.ILookupNormalizer,Microsoft.AspNetCore.Identity.IdentityErrorDescriber,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{Microsoft.AspNetCore.Identity.UserManager{Xdoc.Model.Entities.Users.Default.ApplicationUser}})">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="store"></param>
+            <param name="optionsAccessor"></param>
+            <param name="passwordHasher"></param>
+            <param name="userValidators"></param>
+            <param name="passwordValidators"></param>
+            <param name="keyNormalizer"></param>
+            <param name="errors"></param>
+            <param name="services"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Xdoc.Logic.Services.ApplicationUserManager.GetClientAsync(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            
+            </summary>
+            <param name="claimsPrincipal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Logic.Services.ApplicationUserManager.GetCachedUser(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            
+            </summary>
+            <param name="claimsPrincipal"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

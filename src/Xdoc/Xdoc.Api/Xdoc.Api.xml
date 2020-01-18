@@ -4,6 +4,17 @@
         <name>Xdoc.Api</name>
     </assembly>
     <members>
+        <member name="T:Xdoc.Api.ApiMapOverridings">
+            <summary>
+            Переопределения для моделей
+            </summary>
+        </member>
+        <member name="M:Xdoc.Api.ApiMapOverridings.GetOverridings">
+            <summary>
+            Получить переопределения
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Xdoc.Api.Controllers.AccountController">
             <summary>
             Предоставляет методы для работы с учетной записью а также логгинирование
@@ -169,6 +180,54 @@
             Склонения для человека
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xdoc.Api.InterfaceOverriders.GenericInterfaceOverriderExtensions">
+            <summary>
+            Расширения для переопределений пользовательского интерфейса
+            </summary>
+        </member>
+        <member name="M:Xdoc.Api.InterfaceOverriders.GenericInterfaceOverriderExtensions.GetTransactionHandler">
+            <summary>
+            Получить системный хендлер для транзакции
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Api.InterfaceOverriders.GenericInterfaceOverriderExtensions.AddNotSelectedToStartOfTheList(System.Collections.Generic.List{Zoo.GenericUserInterface.Models.MySelectListItem},System.String)">
+            <summary>
+            Добавить опцию 'Не выбрано' в начало списка
+            </summary>
+            <param name="list"></param>
+            <param name="notSelectedText"></param>
+        </member>
+        <member name="T:CrocoShop.Api.Controllers.Api.Developer.DocumentationController">
+            <inheritdoc />
+            <summary>
+            Предоставляет автогенерируемую документацию
+            </summary>
+        </member>
+        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.#ctor(Xdoc.Model.Contexts.XdocDbContext,Xdoc.Logic.Services.ApplicationSignInManager,Xdoc.Logic.Services.ApplicationUserManager,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <inheritdoc />
+        </member>
+        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.GetTypeDocumentation(System.String)">
+            <summary>
+            Получить документацию по типу в проекте
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.GetEnumTypeDocumentation(System.String)">
+            <summary>
+            Получить документацию по перечислению в проекте
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.GetGenericInterfaceModel(System.String,System.String,System.Boolean)">
+            <summary>
+            Получить модель для построения обобщенного интерфейса
+            </summary>
+            <param name="typeName"></param>
+            <param name="modelPrefix"></param>
+            <param name="useOverridings"></param>
             <returns></returns>
         </member>
     </members>

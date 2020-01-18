@@ -15,13 +15,32 @@ using Xdoc.Model.Entities.Users.Default;
 
 namespace Xdoc.Logic.Services
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="store"></param>
+        /// <param name="optionsAccessor"></param>
+        /// <param name="passwordHasher"></param>
+        /// <param name="userValidators"></param>
+        /// <param name="passwordValidators"></param>
+        /// <param name="keyNormalizer"></param>
+        /// <param name="errors"></param>
+        /// <param name="services"></param>
+        /// <param name="logger"></param>
         public ApplicationUserManager(IUserStore<ApplicationUser> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<ApplicationUser> passwordHasher, IEnumerable<IUserValidator<ApplicationUser>> userValidators, IEnumerable<IPasswordValidator<ApplicationUser>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<ApplicationUser>> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="claimsPrincipal"></param>
+        /// <returns></returns>
         public Task<Client> GetClientAsync(ClaimsPrincipal claimsPrincipal)
         {
             if (!claimsPrincipal.Identity.IsAuthenticated)
@@ -35,6 +54,11 @@ namespace Xdoc.Logic.Services
                 .Query<Client>().FirstOrDefaultAsync(x => x.Id == userId);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="claimsPrincipal"></param>
+        /// <returns></returns>
         public ApplicationUser GetCachedUser(ClaimsPrincipal claimsPrincipal)
         {
             if (!claimsPrincipal.Identity.IsAuthenticated)
