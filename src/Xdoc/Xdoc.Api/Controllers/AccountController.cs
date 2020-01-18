@@ -2,6 +2,7 @@
 using Clt.Logic.Models;
 using Clt.Logic.Models.Account;
 using Clt.Logic.Workers.Accounts;
+using Croco.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -21,9 +22,9 @@ namespace Xdoc.Api.Controllers
         {
         }
 
-        private AccountLoginWorker AccountLoginWorker => new AccountLoginWorker(ContextWrapper);
+        AccountLoginWorker AccountLoginWorker => new AccountLoginWorker(AmbientContext);
 
-        private AccountRegistrationWorker AccountRegistrationWorker => new AccountRegistrationWorker(ContextWrapper);
+        AccountRegistrationWorker AccountRegistrationWorker => new AccountRegistrationWorker(AmbientContext);
 
         #region Методы логинирования
 

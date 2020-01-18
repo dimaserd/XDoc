@@ -4,11 +4,32 @@
         <name>Xdoc.Logic</name>
     </assembly>
     <members>
-        <member name="M:Xdoc.Logic.Implementations.HangfireTaskEnqueuer.Enqueue(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task}})">
+        <member name="T:Xdoc.Logic.Implementations.MyApplicationSettingManager">
             <summary>
-            Поставить задачу в очередь
+            Класс для работы с настройками пользователя через куки
             </summary>
-            <param name="methodCall"></param>
+        </member>
+        <member name="M:Xdoc.Logic.Implementations.MyApplicationSettingManager.#ctor(Croco.WebApplication.Abstractions.ICookieManager,Croco.Core.Abstractions.ICrocoAmbientContext)">
+            <summary>
+            Создает экземпляр класса <see cref="T:Xdoc.Logic.Implementations.MyApplicationSettingManager"/>
+            </summary>
+            <param name="cookieManager"></param>
+            <param name="ambientContext"></param>
+        </member>
+        <member name="M:Xdoc.Logic.Implementations.MyApplicationSettingManager.GetUserSettingAsync``1">
+            <summary>
+            Получить настройку пользователя
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Xdoc.Logic.Implementations.MyApplicationSettingManager.UpdateUserSettingAsync``1(``0)">
+            <summary>
+            Обновить настройку пользователя
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+            <returns></returns>
         </member>
         <member name="T:Xdoc.Logic.Workers.ClientDocumentsModel">
             <summary>
@@ -25,7 +46,7 @@
             Предоставляет методы для работы с документами клиента
             </summary>
         </member>
-        <member name="M:Xdoc.Logic.Workers.ClientDocsWorker.#ctor(Croco.Core.Abstractions.ContextWrappers.IUserRequestWithRepositoryFactory)">
+        <member name="M:Xdoc.Logic.Workers.ClientDocsWorker.#ctor(Croco.Core.Abstractions.ICrocoAmbientContext)">
             <summary>
             Конструктор
             </summary>

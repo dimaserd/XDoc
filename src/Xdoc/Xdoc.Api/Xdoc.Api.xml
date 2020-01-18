@@ -57,6 +57,12 @@
             Менеджер ролей
             </summary>
         </member>
+        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.UserSettingManager">
+            <summary>
+            Менеджер настроек пользователя
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.CookieManager">
             <summary>
             Менеджер для работы с куками
@@ -67,37 +73,64 @@
             Менеджер авторизации
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.Context">
+        <member name="M:Xdoc.Api.Controllers.Base.BaseApiController.Dispose(System.Boolean)">
+            <inheritdoc />
+            <summary>
+            Удаление объекта из памяти
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Xdoc.Api.Controllers.Base.CrocoGenericController`2">
+            <summary>
+            Обобщенный веб-контроллер с основной логикой
+            </summary>
+            <typeparam name="TContext"></typeparam>
+            <typeparam name="TUser"></typeparam>
+        </member>
+        <member name="M:Xdoc.Api.Controllers.Base.CrocoGenericController`2.#ctor(`0,Microsoft.AspNetCore.Identity.SignInManager{`1},Microsoft.AspNetCore.Identity.UserManager{`1},System.Func{System.Security.Principal.IPrincipal,System.String},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <inheritdoc />
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.Context">
             <summary>
             Контекст для работы с бд
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.ContextWrapper">
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.CrocoPrincipal">
             <summary>
-            Обёртка для контекста
+            Контекст текущего пользователя
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.SignInManager">
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.RequestContext">
+            <summary>
+            Контекст текущего запроса
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.AmbientContext">
+            <summary>
+            Обёртка для контекста окружения
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.Connection">
+            <summary>
+            Соединение к удалённому источнику данных
+            </summary>
+        </member>
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.SignInManager">
             <summary>
             Менеджер авторизации
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.UserManager">
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.UserManager">
             <summary>
             Менеджер для работы с пользователями
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.HttpContextAccessor">
+        <member name="P:Xdoc.Api.Controllers.Base.CrocoGenericController`2.HttpContextAccessor">
             <summary>
             Контекст доступа к запросу
             </summary>
         </member>
-        <member name="P:Xdoc.Api.Controllers.Base.BaseApiController.UserId">
-            <summary>
-            Идентификатор текущего залогиненного пользователя
-            </summary>
-        </member>
-        <member name="M:Xdoc.Api.Controllers.Base.BaseApiController.Dispose(System.Boolean)">
+        <member name="M:Xdoc.Api.Controllers.Base.CrocoGenericController`2.Dispose(System.Boolean)">
             <inheritdoc />
             <summary>
             Удаление объекта из памяти

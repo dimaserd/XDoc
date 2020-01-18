@@ -27,7 +27,7 @@ namespace Xdoc.Api.Controllers
         {
         }
 
-        private ClientDocsWorker ClientDocsWorker => new ClientDocsWorker(ContextWrapper);
+        ClientDocsWorker ClientDocsWorker => new ClientDocsWorker(AmbientContext);
 
         /// <summary>
         /// Получить документы клиента
@@ -51,7 +51,5 @@ namespace Xdoc.Api.Controllers
         {
             return ClientDocsWorker.CreateOrUpdateClientPassport(model);
         }
-
-
     }
 }

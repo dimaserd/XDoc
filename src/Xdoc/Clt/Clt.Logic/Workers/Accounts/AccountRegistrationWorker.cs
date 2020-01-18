@@ -1,6 +1,8 @@
 ﻿using Clt.Contract.Events;
 using Clt.Logic.Models;
 using Clt.Logic.Models.Account;
+using Croco.Core.Abstractions;
+using Croco.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace Clt.Logic.Workers.Accounts
 
     public class AccountRegistrationWorker : XDocBaseWorker
     {
-        public AccountRegistrationWorker(IUserContextWrapper<XdocDbContext> contextWrapper) : base(contextWrapper)
+        public AccountRegistrationWorker(ICrocoAmbientContext contextWrapper) : base(contextWrapper)
         {
         }
 
@@ -56,7 +58,7 @@ namespace Clt.Logic.Workers.Accounts
 
             RegisteredUser = regResult.User;
 
-            Application.EventPublisher.Publish(new ClientRegisteredEvent
+            await PublishMessageAsync(new ClientRegisteredEvent
             {
                 ClientId = regResult.Client.Id
             });

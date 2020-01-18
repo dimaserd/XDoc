@@ -1,11 +1,11 @@
 ﻿using Clt.Contract.Account;
+using Croco.Core.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Xdoc.Logic.Workers;
-using Xdoc.Model.Contexts;
 using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Workers.Users
@@ -15,7 +15,12 @@ namespace Clt.Logic.Workers.Users
     /// </summary>
     public class UserSearcher : XDocBaseWorker
     {
-        
+        public static Expression<Func<ApplicationUser, ApplicationUserModel>> SelectExpression = x => new ApplicationUserModel
+        {
+            Id = x.Id,
+            Email = x.Email,
+            PhoneNumber = x.PhoneNumber
+        };
 
         #region Методы получения одного пользователя
 
@@ -38,17 +43,15 @@ namespace Clt.Logic.Workers.Users
 
         private Task<ApplicationUserModel> GetUserByPredicateExpression(Expression<Func<ApplicationUserModel, bool>> predicate)
         {
-            var usersRepo = GetRepository<ApplicationUser>();
-
-            return usersRepo.Query()
-                .Select(ApplicationUserModel.SelectExpression)
+            return Query<ApplicationUser>()
+                .Select(SelectExpression)
                 .FirstOrDefaultAsync(predicate);
         }
 
         #endregion
 
         
-        public UserSearcher(IUserContextWrapper<XdocDbContext> contextWrapper) : base(contextWrapper)
+        public UserSearcher(ICrocoAmbientContext contextWrapper) : base(contextWrapper)
         {
         }
     }

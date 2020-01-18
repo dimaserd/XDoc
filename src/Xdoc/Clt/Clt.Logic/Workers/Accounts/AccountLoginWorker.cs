@@ -2,6 +2,8 @@
 using Clt.Logic.Abstractions;
 using Clt.Logic.Models.Account;
 using Clt.Logic.Workers.Users;
+using Croco.Core.Abstractions;
+using Croco.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace Clt.Logic.Workers.Accounts
                 return new BaseApiResponse<LoginResultModel>(validation);
             }
 
-            var searcher = new UserSearcher(ApplicationContextWrapper);
+            var searcher = new UserSearcher(AmbientContext);
 
             var user = await searcher.GetUserByPhoneNumberAsync(model.PhoneNumber);
 
@@ -43,7 +45,7 @@ namespace Clt.Logic.Workers.Accounts
                 return new BaseApiResponse<LoginResultModel>(validation);
             }
 
-            if (ContextWrapper.IsAuthenticated)
+            if (IsAuthenticated)
             {
                 return new BaseApiResponse<LoginResultModel>(false, "Вы уже авторизованы в системе", new LoginResultModel { Result = LoginResult.AlreadyAuthenticated });
             }
@@ -59,7 +61,7 @@ namespace Clt.Logic.Workers.Accounts
 
             try
             {
-                var userWorker = new UserWorker(ApplicationContextWrapper);
+                var userWorker = new UserWorker(AmbientContext);
 
                 //проверяю пароль
                 var passCheckResult = await userWorker.CheckUserNameAndPasswordAsync(user.Id, user.UserName, model.Password);
@@ -74,9 +76,7 @@ namespace Clt.Logic.Workers.Accounts
             }
             catch (Exception ex)
             {
-                var logger = Context.GetLogger();
-
-                await logger.LogExceptionAsync(ex);
+                Logger.LogException(ex);
 
                 return new BaseApiResponse<LoginResultModel>(false, ex.Message);
             }
@@ -103,7 +103,7 @@ namespace Clt.Logic.Workers.Accounts
             return new BaseApiResponse(true, "Вы успешно разлогинены в системе");
         }
 
-        public AccountLoginWorker(IUserContextWrapper<XdocDbContext> contextWrapper) : base(contextWrapper)
+        public AccountLoginWorker(ICrocoAmbientContext contextWrapper) : base(contextWrapper)
         {
         }
     }

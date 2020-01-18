@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Croco.Core.Abstractions;
+using Croco.Core.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Xdoc.Logic.Workers;
-using Xdoc.Model.Contexts;
 using Xdoc.Model.Entities.Users.Default;
 
 namespace Clt.Logic.Workers.Users
@@ -11,7 +12,7 @@ namespace Clt.Logic.Workers.Users
     {
         public async Task<BaseApiResponse> CheckUserNameAndPasswordAsync(string userId, string userName, string pass)
         {
-            var userRepo = ContextWrapper.GetRepository<ApplicationUser>();
+            var userRepo = GetRepository<ApplicationUser>();
 
             var user = await userRepo.Query()
                 .FirstOrDefaultAsync(x => x.Id == userId);
@@ -23,7 +24,7 @@ namespace Clt.Logic.Workers.Users
             return new BaseApiResponse(t, "");
         }
 
-        public UserWorker(IUserContextWrapper<XdocDbContext> contextWrapper) : base(contextWrapper)
+        public UserWorker(ICrocoAmbientContext contextWrapper) : base(contextWrapper)
         {
         }
     }

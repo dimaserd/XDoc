@@ -5,12 +5,13 @@ using Croco.Core.Application;
 using Croco.WebApplication.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Xdoc.Logic.Extensions;
 using Xdoc.Logic.Implementations;
 using Xdoc.Logic.Services;
 using Xdoc.Model.Contexts;
 using Xdoc.Model.Entities.Users.Default;
 
-namespace CrocoShop.Api.Controllers.Base
+namespace Xdoc.Api.Controllers.Base
 {
     /// <inheritdoc />
     /// <summary>
