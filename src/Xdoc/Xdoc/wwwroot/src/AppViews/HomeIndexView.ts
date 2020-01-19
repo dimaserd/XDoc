@@ -4,7 +4,7 @@
     }
 
     public SetHandlers(): void {
-        CrocoAppCore.GenericInterfaceHelper.GetUserInterfaceModel("RussianFederationPassportModel", "somePrefix", x => {
+        CrocoAppCore.GenericInterfaceHelper.GetUserInterfaceModel("DemoDocumentModel", "somePrefix", x => {
             
             //Метод отрисовки
             CrocoAppCore.GenericInterfaceHelper.FormHelper.DrawForm({

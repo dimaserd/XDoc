@@ -1,9 +1,10 @@
 ﻿using Croco.Core.Abstractions.Data.Entities.HaveId;
+using Croco.Core.Model.Abstractions.Entity;
 using Croco.Core.Model.Models;
 
 namespace Xdoc.Model.Entities
 {
-    public class Client : AuditableEntityBase, IHaveStringId
+    public class Client : AuditableEntityBase, ICrocoUser
     {
         public string Id { get; set; }
 
@@ -12,5 +13,7 @@ namespace Xdoc.Model.Entities
         public string Name { get; set; }
 
         public string PhoneNumber { get; set; }
+        public string Surname { get; set; }
+        public string Patronymic { get; set; }
     }
 }

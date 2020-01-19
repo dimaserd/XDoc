@@ -18,6 +18,13 @@ namespace Xdoc.Api.Controllers
     [Route("Api/Account")]
     public class AccountController : BaseApiController
     {
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="userManager"></param>
+        /// <param name="httpContextAccessor"></param>
         public AccountController(XdocDbContext context, ApplicationSignInManager signInManager, ApplicationUserManager userManager, IHttpContextAccessor httpContextAccessor) : base(context, signInManager, userManager, httpContextAccessor)
         {
         }

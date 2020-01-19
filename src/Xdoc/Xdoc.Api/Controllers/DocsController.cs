@@ -1,8 +1,15 @@
-﻿using Croco.Core.Models;
+﻿using Croco.Core.Application;
+using Croco.Core.Extensions;
+using Croco.Core.Models;
+using Doc.Contract.Models;
+using Doc.Contract.Services;
+using Doc.Logic.Workers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using Xdoc.Api.Controllers.Base;
+using Xdoc.Logic.Implementations;
 using Xdoc.Logic.Models;
 using Xdoc.Logic.Services;
 using Xdoc.Logic.Workers;
@@ -68,6 +75,34 @@ namespace Xdoc.Api.Controllers
             }
 
             return FullNameDeclension.GetByHumanModel(model);
+        }
+
+        /// <summary>
+        /// Распечатать документ
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("Print")]
+        public FileResult Print([FromForm]DemoDocumentModel model)
+        {
+            var fileName = $"Filename.docx";
+
+            var app = CrocoApp.Application;
+
+            var filePath = app.MapPath($"~/wwwroot/Docs/{fileName}");
+
+            var doccer = new DocumentWorker(AmbientContext);
+
+            var t = doccer.RenderDoc(model, filePath);
+
+            if (!t.IsSucceeded)
+            {
+                throw new ApplicationException(t.Message);
+            }
+
+            var mime = XDocWebApplication.GetMimeMapping(fileName);
+
+            return PhysicalFile(filePath, mime, fileName);
         }
     }
 }

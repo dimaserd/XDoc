@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Clt\Clt.Logic\Clt.Logic.csproj" />
+    <ProjectReference Include="..\Doc\Doc.Logic\Doc.Logic.csproj" />
     <ProjectReference Include="..\XDoc.Logic\Xdoc.Logic.csproj" />
   </ItemGroup>
 

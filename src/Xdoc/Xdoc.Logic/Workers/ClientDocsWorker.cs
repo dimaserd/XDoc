@@ -1,11 +1,16 @@
 ﻿using Croco.Core.Abstractions;
 using Croco.Core.Models;
+using Doc.Contract.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Xdoc.Logic.Models;
 using Xdoc.Model.Entities;
 using Xdoc.Model.Enumerations;
+using Zoo.Doc.Declension.Models;
+using Zoo.Doc.WordGen.Implementations;
+using Zoo.Doc.WordGen.Models;
+using Zoo.Doc.WordGen.Workers;
 
 namespace Xdoc.Logic.Workers
 {
