@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Doc\Doc.Contract\Doc.Contract.csproj" />
     <ProjectReference Include="..\Xdoc.Model\Xdoc.Model.csproj" />
   </ItemGroup>
 
