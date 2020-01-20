@@ -4,6 +4,7 @@ using Doc.Contract.Models;
 using Doc.Logic.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Xdoc.Logic.Workers;
 using Zoo.Doc.Declension.Enumerations;
 using Zoo.Doc.Declension.Models;
@@ -45,22 +46,28 @@ namespace Doc.Logic.Workers
             {
                 return validation;
             }
-            var docTemplate = Application.MapPath("~/wwwroot/DocTemplates/Document.docx");
+            var docTemplate = Application.MapPath("~/wwwroot/DocTemplates/DemoDoc.docx");
 
-            return RenderDocForPurchase(model, docSaveFileName, docTemplate);
+            return RenderDocForInner(model, docSaveFileName, docTemplate);
         }
 
-        static string ToStr(DateTime date) => date.Date.ToString("mm.dd.YYYY");
+        static string ToStr(DateTime date) => date.Date.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-        public static BaseApiResponse RenderDocForPurchase(DemoDocumentModel model, string docSaveFileName, string docTemplate)
+        public static BaseApiResponse RenderDocForInner(DemoDocumentModel model, string docSaveFileName, string docTemplate)
         {
-
-            var humanDecl = FullNameDeclension.GetByHumanModel(new HumanModel
+            var humanDeclResult = FullNameDeclension.GetByHumanModel(new HumanModel
             {
                 FirstName = model.Name,
                 LastName = model.LastName,
                 Patronymic = model.Patronymic
             });
+
+            if(!humanDeclResult.IsSucceeded)
+            {
+                return humanDeclResult;
+            }
+
+            var humanDecl = humanDeclResult.ResponseObject;
 
             var days = (model.ToDate.Date - model.FromDate.Date).TotalDays;
 
@@ -68,6 +75,7 @@ namespace Doc.Logic.Workers
             {
                 Replaces = new Dictionary<string, string>
                 {
+                    ["{DocumentDate}"] = ToStr(DateTime.Now),
                     ["{FromName}"] = $"{humanDecl.LastName.GetByWordCase(WordCase.Р)} {humanDecl.FirstName.GetByWordCase(WordCase.Р)} {humanDecl.Patronymic.GetByWordCase(WordCase.Р)}".Trim(),
                     ["{Text}"] = $"Прошу предоставить мне ежегодный оплачиваемый отпуск с {ToStr(model.FromDate)} по {ToStr(model.ToDate)} на {days} дней",
                 },

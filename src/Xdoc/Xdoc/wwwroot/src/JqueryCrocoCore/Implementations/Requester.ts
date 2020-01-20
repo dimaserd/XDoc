@@ -126,6 +126,8 @@ class Requester implements ICrocoRequester {
             return;
         }
 
+        CrocoAppCore.Application.FormDataUtils.ProccessAllDateTimePropertiesAsString(data);
+
 
         let params: any = {};
 

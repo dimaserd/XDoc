@@ -1187,6 +1187,7 @@ var Requester = /** @class */ (function () {
             alert(Requester.Resources.YouPassedAnEmtpyArrayOfObjects);
             return;
         }
+        CrocoAppCore.Application.FormDataUtils.ProccessAllDateTimePropertiesAsString(data);
         var params = {};
         params.type = "POST";
         params.data = data;

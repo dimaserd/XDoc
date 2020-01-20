@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Xml;
+using Croco.Core.Models;
 using RestSharp;
 
 namespace Zoo.Doc.Declension.Models
 {
     public class FullNameDeclension
     {
-        public static FullNameDeclension GetByHumanModel(HumanModel human)
+        public static BaseApiResponse<FullNameDeclension> GetByHumanModel(HumanModel human)
         {
             if (human == null)
             {
@@ -23,6 +24,11 @@ namespace Zoo.Doc.Declension.Models
 
             IRestResponse response = client.Execute(request);
 
+            if(response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return new BaseApiResponse<FullNameDeclension>(false, "Удаленный сервер не вернул данные");
+            }
+
             var content = response.Content; // raw content as string
 
             var xml = new XmlDocument();
@@ -31,7 +37,7 @@ namespace Zoo.Doc.Declension.Models
 
             var declension = new FullNameDeclension(human, xml);
 
-            return declension;
+            return new BaseApiResponse<FullNameDeclension>(true, "Ok", declension);
         }
 
         public FullNameDeclension(HumanModel human, XmlNode xml)

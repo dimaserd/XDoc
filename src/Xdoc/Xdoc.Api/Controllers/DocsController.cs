@@ -66,8 +66,8 @@ namespace Xdoc.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("Declension")]
-        [ProducesDefaultResponseType(typeof(FullNameDeclension))]
-        public FullNameDeclension Declension([FromForm]HumanModel model)
+        [ProducesDefaultResponseType(typeof(BaseApiResponse<FullNameDeclension>))]
+        public BaseApiResponse<FullNameDeclension> Declension([FromForm]HumanModel model)
         {
             if(model == null)
             {
@@ -83,26 +83,24 @@ namespace Xdoc.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("Print")]
-        public FileResult Print([FromForm]DemoDocumentModel model)
+        public BaseApiResponse<string> Print([FromForm]DemoDocumentModel model)
         {
-            var fileName = $"Filename.docx";
+            var fileName = $"Заявление.docx";
 
-            var app = CrocoApp.Application;
+            var rootDirPath = CrocoApp.Application.MapPath($"~/wwwroot");
 
-            var filePath = app.MapPath($"~/wwwroot/Docs/{fileName}");
+            var filePath = $"Docs/{fileName}";
 
             var doccer = new DocumentWorker(AmbientContext);
 
-            var t = doccer.RenderDoc(model, filePath);
+            var t = doccer.RenderDoc(model, $"{rootDirPath}/{filePath}");
 
             if (!t.IsSucceeded)
             {
-                throw new ApplicationException(t.Message);
+                return new BaseApiResponse<string>(t);
             }
 
-            var mime = XDocWebApplication.GetMimeMapping(fileName);
-
-            return PhysicalFile(filePath, mime, fileName);
+            return new BaseApiResponse<string>(t, filePath);
         }
     }
 }

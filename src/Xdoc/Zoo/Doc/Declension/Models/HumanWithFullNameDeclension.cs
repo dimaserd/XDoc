@@ -22,7 +22,7 @@ namespace Zoo.Doc.Declension.Models
                     throw new NullReferenceException($"Пустое свойство {nameof(Human)}");
                 }
 
-                _declension = FullNameDeclension.GetByHumanModel(Human);
+                _declension = FullNameDeclension.GetByHumanModel(Human).ResponseObject;
 
                 return _declension;
             }
