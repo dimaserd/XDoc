@@ -30,13 +30,18 @@ class HomeIndexView {
         }).bind(this));
 
         document.getElementById("create-doc-btn").addEventListener("click", (() => this.RenderDocument()).bind(this));
+
+        let url = `${window.location.origin}/DocTemplates/DemoDoc.docx`;
+
+        document.getElementById("doc-template-preview").innerHTML = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${url}' style="width:100%;height:100%" frameborder='0'></iframe>`;
+
+        (document.getElementById("download-template-btn") as HTMLAnchorElement).href = url;
     }
 
     public RenderDocument(): void {
 
         let data = CrocoAppCore.Application.FormDataHelper
             .CollectDataByPrefixWithTypeMatching(this.modelPrefix, this.typeDescription);
-
 
         console.log("RenderDocument", data);
 
@@ -46,8 +51,6 @@ class HomeIndexView {
                 return;
             }
 
-           
-
             let a = document.getElementById("download-result-btn") as HTMLAnchorElement;
 
             a.href = x.ResponseObject;
@@ -56,9 +59,7 @@ class HomeIndexView {
 
             console.log(url);
 
-            let elem = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${url}' style="width:100%;height:100%" frameborder='0'></iframe>`;
-
-            document.getElementById("doc-frame").innerHTML = elem;
+            document.getElementById("doc-frame").innerHTML = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${url}' style="width:100%;height:100%" frameborder='0'></iframe>`;
 
             $("#create-doc-form").fadeOut();
             $("#create-doc-result").fadeIn();
