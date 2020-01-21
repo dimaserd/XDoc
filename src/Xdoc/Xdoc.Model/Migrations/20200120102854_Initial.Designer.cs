@@ -10,8 +10,8 @@ using Xdoc.Model.Contexts;
 namespace Xdoc.Model.Migrations
 {
     [DbContext(typeof(XdocDbContext))]
-    [Migration("20200118114151_UpdateCore")]
-    partial class UpdateCore
+    [Migration("20200120102854_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -353,6 +353,12 @@ namespace Xdoc.Model.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Patronymic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -360,6 +366,9 @@ namespace Xdoc.Model.Migrations
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

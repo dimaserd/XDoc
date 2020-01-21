@@ -9,7 +9,7 @@ namespace Xdoc.CrocoStuff
     {
         public static void Register(ICrocoApplication application)
         {
-            LogApplicationInit();
+            //LogApplicationInit();
         }
 
         public static void LogApplicationInit()
