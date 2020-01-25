@@ -302,13 +302,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.GetGenericInterfaceModel(System.String,System.String,System.Boolean)">
+        <member name="M:CrocoShop.Api.Controllers.Api.Developer.DocumentationController.GetGenericInterfaceModel(System.String,System.String)">
             <summary>
             Получить модель для построения обобщенного интерфейса
             </summary>
             <param name="typeName"></param>
             <param name="modelPrefix"></param>
-            <param name="useOverridings"></param>
             <returns></returns>
         </member>
     </members>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Croco.Core.Application;
 using Croco.Core.Documentation.Models;
 using Croco.Core.Documentation.Services;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Xdoc.Api;
 using Xdoc.Api.Controllers.Base;
 using Xdoc.Logic.Services;
 using Xdoc.Model.Contexts;
+using Zoo;
 using Zoo.GenericUserInterface.Models;
 using Zoo.GenericUserInterface.Services;
 
@@ -76,10 +78,14 @@ namespace CrocoShop.Api.Controllers.Api.Developer
         /// </summary>
         /// <param name="typeName"></param>
         /// <param name="modelPrefix"></param>
-        /// <param name="useOverridings"></param>
         /// <returns></returns>
         [HttpPost("GenericInterface"), ProducesDefaultResponseType(typeof(CrocoTypeDescription))]
-        public Task<GenerateGenericUserInterfaceModel> GetGenericInterfaceModel(string typeName, string modelPrefix, bool useOverridings = true)
+        public GenerateGenericUserInterfaceModel GetGenericInterfaceModel(string typeName, string modelPrefix)
+        {
+            return Optimizations.GetValue($"GenericInterface.{typeName}.{modelPrefix}", () => GetGenericInterfaceModelTask(typeName, modelPrefix), CrocoApp.Application.CacheManager);
+        }
+
+        private static Task<GenerateGenericUserInterfaceModel> GetGenericInterfaceModelTask(string typeName, string modelPrefix)
         {
             var type = CrocoTypeSearcher.FindFirstTypeByName(typeName);
 
@@ -88,7 +94,7 @@ namespace CrocoShop.Api.Controllers.Api.Developer
                 return Task.FromResult((GenerateGenericUserInterfaceModel)null);
             }
 
-            return GetModelByType(type, modelPrefix, useOverridings);
+            return GetModelByType(type, modelPrefix, true);
         }
 
         private static async Task<GenerateGenericUserInterfaceModel> GetModelByType(Type type, string modelPrefix, bool useOverridings)

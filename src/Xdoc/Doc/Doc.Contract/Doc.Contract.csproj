@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="NetCroco.Core.Abstractions" Version="1.1.12" />
+    <PackageReference Include="NetCroco.Core.Abstractions" Version="1.1.13" />
   </ItemGroup>
   
 </Project>

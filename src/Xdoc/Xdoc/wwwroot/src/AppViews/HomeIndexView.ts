@@ -11,6 +11,8 @@ class HomeIndexView {
 
     typeDescription: CrocoTypeDescription;
 
+    isBusy: boolean;
+
     constructor() {
         this.SetHandlers();
     }
@@ -40,32 +42,42 @@ class HomeIndexView {
 
     public RenderDocument(): void {
 
+        if (this.isBusy) {
+            CrocoAppCore.ToastrWorker.ShowSuccess("Ожидайте рендеринга документа");
+            return;
+        }
+
+        this.isBusy = true;
+
         let data = CrocoAppCore.Application.FormDataHelper
             .CollectDataByPrefixWithTypeMatching(this.modelPrefix, this.typeDescription);
 
         console.log("RenderDocument", data);
 
-        CrocoAppCore.Application.Requester.SendPostRequestWithAnimation<IGenericBaseApiResponse<string>>("/Api/Docs/Print", data, x => {
+        CrocoAppCore.Application.Requester.SendPostRequestWithAnimation("/Api/Docs/Print", data, this.RenderDocument.bind(this), null);
+    }
 
-            if (!x.IsSucceeded) {
-                return;
-            }
+    public RenderDocumentHandler(x: IGenericBaseApiResponse<string>): void {
+        this.isBusy = false;
 
-            let a = document.getElementById("download-result-btn") as HTMLAnchorElement;
+        if (!x.IsSucceeded) {
+            return;
+        }
 
-            a.href = x.ResponseObject;
+        let a = document.getElementById("download-result-btn") as HTMLAnchorElement;
 
-            let url = `${window.location.origin}/${x.ResponseObject}`;
+        a.href = x.ResponseObject;
 
-            console.log(url);
+        let url = `${window.location.origin}/${x.ResponseObject}`;
 
-            document.getElementById("doc-frame").innerHTML = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${url}' style="width:100%;height:100%" frameborder='0'></iframe>`;
+        console.log(url);
 
-            $("#create-doc-form").fadeOut();
-            $("#create-doc-result").fadeIn();
+        document.getElementById("doc-frame").innerHTML = `<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=${url}' style="width:100%;height:100%" frameborder='0'></iframe>`;
 
-            console.log(x);
-        }, null);
+        $("#create-doc-form").fadeOut();
+        $("#create-doc-result").fadeIn();
+
+        console.log(x);
     }
 }
 
