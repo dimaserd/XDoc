@@ -17,6 +17,6 @@
     "@types/popper.js": "^1.11.0",
     "bootstrap": "^4.4.1",
     "install": "^0.12.2",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   }
 }
